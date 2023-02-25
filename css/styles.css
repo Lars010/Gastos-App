@@ -1,0 +1,79 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container { 
+    inline-size: 60rem;
+    block-size: 100vh;
+    border: 1px solid red;
+    background: whitesmoke;
+    padding-inline: 2rem;
+    display: flex;
+    gap: 3rem;
+}
+
+.gasto {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    inline-size: 20rem;
+    border: 1px solid red
+}
+
+.gasto p {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.inputcito {
+    inline-size: 15rem;
+    block-size: 2rem;
+    background: rgb(125, 121, 121);
+    color: white;
+    border: 3px solid red;
+    border-radius: 0.5rem;
+    margin-inline-start: .8rem;
+    margin-block-end: 2rem;
+    margin-block-start: 2rem;
+}
+
+.monto-input {
+    inline-size: 5rem;
+    block-size: 2rem;
+    background: rgb(125, 121, 121);
+    color: white;
+    border: 3px solid red;
+    border-radius: 0.5rem;
+    margin-block-end: 2rem;
+    margin-inline-start: .8rem;
+}
+
+.delete {
+    inline-size: 2rem;
+    block-size: 2rem;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+
+.input2 {
+    margin-inline-start: 4rem;
+    display: flex;
+}
+
+.boton {
+    inline-size: 6.5rem;
+    block-size: 2.5rem;
+    background-color: lightblue;
+    color: black;
+    border: 3px solid red;
+    border-radius: 0.5rem;
+    margin-inline-start: 3.5rem;
+    margin-block-end: 2rem;
+    cursor: pointer;
+}
