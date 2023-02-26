@@ -1,82 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/styles.css" />
-    <title>Presupuesto Mensual</title>
-  </head>
-  <body>
-    <div class="container">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <title>Presupuesto Mensual</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="presupuesto">
       <h1>Presupuesto Mensual</h1>
-      <div class="lista-gastos">
-        <h2>Lista de Gastos</h2>
-        <div class="inputs">
-          <div class="input1">
-            <label for="poner-gastos">Ingresa un gasto :</label>
-            <input type="text" id="poner-gastos" class="inputcito" />
-          </div>
-          <div class="input2">
-            <label for="monto">Monto :</label>
-            <input type="number" id="monto" class="monto-input" />
-            <button class="boton" id="ingresar-gasto">Ingresar gasto</button>
-          </div>
-        </div>
-        <ul id="lista" class="gastos">
-          <li class="gasto">
-            <p>- Agua</p>
-            <p>$400</p>
-          </li>
-        </ul>
-      </div>
-      <div class="resultado">
-        <h2>Gastos Totales</h2>
-        <p id="total"></p>
-      </div>
+      <label for="ingreso">Ingresa tu ingreso Mensual</label>
+      <input type="number" id="ingreso">
+      <button id="ingreso-boton">Agregar</button>
+      <p id="presupuesto"></p>
     </div>
+    <div class="lista-gastos">
+      <h2>Lista de Gastos</h2>
+      <div class="inputs">
+        <div class="input1">
+          <label for="poner-gastos">Ingresa un gasto :</label>
+          <input type="text" id="poner-gastos" class="inputcito" />
+        </div>
+        <div class="input2">
+          <label for="monto">Monto :</label>
+          <input type="number" id="monto" class="monto-input" />
+          <button class="boton" id="ingresar-gasto">Ingresar gasto</button>
+        </div>
+      </div>
+      <ul id="lista" class="gastos">
+        <li class="gasto">
+          <p>- Agua</p>
+          <p>$400</p>
+        </li>
+      </ul>
+    </div>
+    <div class="resultado">
+      <h2>Gastos Totales</h2>
+      <p id="total"></p>
+    </div>
+  </div>
 
-    <script>
-      const listaGastos = document.querySelector("#lista");
-      const agregarGasto = document.querySelector("#poner-gastos");
-      const monto = document.querySelector("#monto");
-      const total = document.querySelector("#total");
-      const ingresarGasto = document.querySelector("#ingresar-gasto");
+  <script>
+    const listaGastos = document.querySelector("#lista");
+    const agregarGasto = document.querySelector("#poner-gastos");
+    const monto = document.querySelector("#monto");
+    const total = document.querySelector("#total");
+    const ingresarGasto = document.querySelector("#ingresar-gasto");
+    const ingreso = document.querySelector("#ingreso");
+    const presupuesto = document.querySelector("#presupuesto");
+    const ingresoBoton = document.querySelector("#ingreso-boton");
 
-      let sumaMontos = 0;
+    let sumaMontos = 0;
+    let restaIngresos = 0;
 
-      ingresarGasto.addEventListener("click", function (e) {
-        const li = document.createElement("li");
-        const deleteBtn = document.createElement("button");
-        deleteBtn.classList.add("delete");
-        li.classList.add("gasto");
-        const montoNum = Number(monto.value);
-        li.innerHTML = `<p>- ${agregarGasto.value} ${montoNum}</p>`;
-        deleteBtn.innerHTML = "X";
-        listaGastos.appendChild(li);
-        li.appendChild(deleteBtn);
-        agregarGasto.value = "";
-        monto.value = "";
+    ingresoBoton.addEventListener("click", function (e) {
+      e.preventDefault();
+      ingreso.style.display = "none";
+      presupuesto.innerHTML = Number(ingreso.value);
+      restaIngresos = Number(ingreso.value);
+    });
 
-        sumaMontos += montoNum;
+    ingresarGasto.addEventListener("click", function (e) {
+      const li = document.createElement("li");
+      const deleteBtn = document.createElement("button");
+      deleteBtn.classList.add("delete");
+      li.classList.add("gasto");
+      const montoNum = Number(monto.value);
+      li.innerHTML = `<p>- ${agregarGasto.value} ${montoNum}</p>`;
+      deleteBtn.innerHTML = "X";
+      listaGastos.appendChild(li);
+      li.appendChild(deleteBtn);
+      agregarGasto.value = "";
+      monto.value = "";
+
+      sumaMontos += montoNum;
+      total.innerHTML = sumaMontos;
+
+      restaIngresos -= montoNum;
+      presupuesto.innerHTML = restaIngresos;
+    });
+
+    listaGastos.addEventListener("click", function (e) {
+      // Si se hace clic en un botón de clase "delete"
+      if (e.target.classList.contains("delete")) {
+        // Obtiene el valor del gasto a eliminar
+        const montoEliminar = Number(
+          e.target.previousElementSibling.textContent.match(/\d+/)[0]
+        );
+        // Resta el valor del gasto a eliminar del total
+        sumaMontos -= montoEliminar;
         total.innerHTML = sumaMontos;
-      });
+        // Resta el valor del gasto a eliminar del presupuesto
+        restaIngresos += montoEliminar;
+        presupuesto.innerHTML = restaIngresos;
+        // Elimina el elemento correspondiente
+        e.target.parentElement.remove();
+      }
+    });
 
-      listaGastos.addEventListener("click", function (e) {
-        // Si se hace clic en un botón de clase "delete"
-        if (e.target.classList.contains("delete")) {
-          // Obtiene el valor del gasto a eliminar
-          const montoEliminar = Number(
-            e.target.previousElementSibling.textContent.match(/\d+/)[0]
-          );
-          // Resta el valor del gasto a eliminar del total
-          sumaMontos -= montoEliminar;
-          total.innerHTML = sumaMontos;
-          // Elimina el elemento correspondiente
-          e.target.parentElement.remove();
-        }
-      });
 
-    </script>
-  </body>
+
+  </script>
+</body>
+
 </html>
