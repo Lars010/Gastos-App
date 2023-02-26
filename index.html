@@ -13,15 +13,15 @@
       <div class="lista-gastos">
         <h2>Lista de Gastos</h2>
         <div class="inputs">
-            <div class="input1">
-                <label for="poner-gastos">Ingresa un gasto :</label>
-                <input type="text" id="poner-gastos" class="inputcito" />
-            </div>
-            <div class="input2">
-                <label for="monto">Monto :</label>
-                <input type="number" id="monto" class="monto-input">
-                <button class="boton" id="ingresar-gasto">Ingresar gasto</button>
-            </div>
+          <div class="input1">
+            <label for="poner-gastos">Ingresa un gasto :</label>
+            <input type="text" id="poner-gastos" class="inputcito" />
+          </div>
+          <div class="input2">
+            <label for="monto">Monto :</label>
+            <input type="number" id="monto" class="monto-input" />
+            <button class="boton" id="ingresar-gasto">Ingresar gasto</button>
+          </div>
         </div>
         <ul id="lista" class="gastos">
           <li class="gasto">
@@ -42,35 +42,40 @@
       const monto = document.querySelector("#monto");
       const total = document.querySelector("#total");
       const ingresarGasto = document.querySelector("#ingresar-gasto");
-      
+
       let sumaMontos = 0;
 
       ingresarGasto.addEventListener("click", function (e) {
-          const li = document.createElement("li");
-          const deleteBtn = document.createElement("button");
-          deleteBtn.classList.add("delete");
-          li.classList.add("gasto");
-          const montoNum = Number(monto.value);
-          li.innerHTML = `<p>- ${agregarGasto.value} ${montoNum}</p>`;
-          deleteBtn.innerHTML = "X";
-          listaGastos.appendChild(li);
-          li.appendChild(deleteBtn);
-          agregarGasto.value = "";
-          monto.value = "";
+        const li = document.createElement("li");
+        const deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("delete");
+        li.classList.add("gasto");
+        const montoNum = Number(monto.value);
+        li.innerHTML = `<p>- ${agregarGasto.value} ${montoNum}</p>`;
+        deleteBtn.innerHTML = "X";
+        listaGastos.appendChild(li);
+        li.appendChild(deleteBtn);
+        agregarGasto.value = "";
+        monto.value = "";
 
-            sumaMontos += montoNum;
-            total.innerHTML = sumaMontos;
+        sumaMontos += montoNum;
+        total.innerHTML = sumaMontos;
       });
 
-        listaGastos.addEventListener("click", function (e) {
-            if (e.target.classList.contains("delete")) {
-            const montoNum = Number(e.target.previousSibling.textContent.split(" ")[1]);    
-            e.target.parentElement.remove();
-            sumaMontos -= montoNum;
-            }
-        });
-
-        //Necesito lograr que cuando se haga click en el boton de eliminar, se elimine el gasto y se reste el monto del total
+      listaGastos.addEventListener("click", function (e) {
+        // Si se hace clic en un botón de clase "delete"
+        if (e.target.classList.contains("delete")) {
+          // Obtiene el valor del gasto a eliminar
+          const montoEliminar = Number(
+            e.target.previousElementSibling.textContent.match(/\d+/)[0]
+          );
+          // Resta el valor del gasto a eliminar del total
+          sumaMontos -= montoEliminar;
+          total.innerHTML = sumaMontos;
+          // Elimina el elemento correspondiente
+          e.target.parentElement.remove();
+        }
+      });
 
     </script>
   </body>
