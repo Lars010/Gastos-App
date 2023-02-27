@@ -1,6 +1,10 @@
 body {
     display: flex;
     justify-content: center;
+    margin: 0;
+    background-image: url(./contabilidad.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container { 
@@ -11,6 +15,20 @@ body {
     padding-inline: 2rem;
     display: flex;
     gap: 3rem;
+    align-items: flex-start;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+}
+
+.lista-gastos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gastos {
+    overflow: scroll;
+    block-size: 40rem;
 }
 
 .gasto {
@@ -18,12 +36,23 @@ body {
     gap: 1rem;
     align-items: center;
     inline-size: 20rem;
-    border: 1px solid red
+    border: 1px solid red;
+    border-radius: 20px;
 }
 
 .gasto p {
     font-size: 1.25rem;
     font-weight: 700;
+}
+
+.gasto-total {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: red;
+    background: white;
+    inline-size: 8rem;
+
 }
 
 .inputcito {
@@ -60,10 +89,21 @@ body {
     cursor: pointer;
 }
 
+.input1 label {
+    font-size: 1.25rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+}
 
 .input2 {
     margin-inline-start: 4rem;
     display: flex;
+}
+
+.input2 label {
+    font-size: 1.25rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
 }
 
 .boton {
@@ -76,6 +116,60 @@ body {
     margin-inline-start: 3.5rem;
     margin-block-end: 2rem;
     cursor: pointer;
+}
+
+.ingreso-button {
+    inline-size: 6.5rem;
+    block-size: 2.5rem;
+    background-color: lightblue;
+    color: black;
+    border: 3px solid red;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-block-start: 2rem;
+}
+
+.presupuesto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(105, 173, 105);
+}
+
+.presupuesto label {
+    font-size: 1.25rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+}
+
+.budget {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: green;
+    background: white;
+    border: 1px solid red;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    inline-size: 8rem;
+    text-align: center;
+}
+
+.ingreso-input {
+    inline-size: 5rem;
+    block-size: 2rem;
+    background: rgb(125, 121, 121);
+    color: white;
+    border: 3px solid red;
+    border-radius: 0.5rem;
+    margin-block-start: 1rem;
+}
+
+.resultado {
+    background: rgb(194, 99, 99);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 410px) {
