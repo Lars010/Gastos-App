@@ -1,58 +1,199 @@
 body {
-    margin: 0;
-}
-
-.wrapper {
-    inline-size: 100vw;
-    block-size: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-image: url(../images/quote-img.jpg);
+    margin: 0;
+    background-image: url(./contabilidad.jpg);
+    background-repeat: no-repeat;
     background-size: cover;
-    margin: 0;
-    
 }
 
-.container {
+.container { 
+    inline-size: 60rem;
+    block-size: 100vh;
+    border: 1px solid red;
+    background: whitesmoke;
+    padding-inline: 2rem;
     display: flex;
-    inline-size: 55rem;
-    block-size: 35rem;
+    gap: 3rem;
+    align-items: flex-start;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+}
+
+.lista-gastos {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    border: 1px solid black;
-    background-color: whitesmoke;
-    border-radius: 1rem;
-    box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
-.quote {
-    margin-block-start: 3rem;
-    margin-block-end: 2rem;
-    padding-inline: 1rem;
+.gastos {
+    overflow: scroll;
+    block-size: 40rem;
 }
 
-.btn {
+.gasto {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    inline-size: 20rem;
+    border: 1px solid red;
+    border-radius: 20px;
+}
+
+.gasto p {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.gasto-total {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: red;
+    background: white;
+    inline-size: 8rem;
+
+}
+
+.inputcito {
     inline-size: 15rem;
-    block-size: 2.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 0.5rem 0.2rem rgba(0, 0, 0, 0.2);
+    block-size: 2rem;
+    background: rgb(125, 121, 121);
+    color: white;
+    border: 3px solid red;
+    border-radius: 0.5rem;
+    margin-inline-start: .8rem;
+    margin-block-end: 2rem;
+    margin-block-start: 2rem;
+}
+
+.monto-input {
+    inline-size: 5rem;
+    block-size: 2rem;
+    background: rgb(125, 121, 121);
+    color: white;
+    border: 3px solid red;
+    border-radius: 0.5rem;
+    margin-block-end: 2rem;
+    margin-inline-start: .8rem;
+}
+
+.delete {
+    inline-size: 2rem;
+    block-size: 2rem;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
     cursor: pointer;
-    animation: bounce .3s infinite alternate;
-}
-@keyframes bounce {
-  to { transform: scale(1.1); }
 }
 
+.input1 label {
+    font-size: 1.25rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+}
 
-.quote-box {
+.input2 {
+    margin-inline-start: 4rem;
+    display: flex;
+}
+
+.input2 label {
+    font-size: 1.25rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+}
+
+.boton {
+    inline-size: 6.5rem;
+    block-size: 2.5rem;
+    background-color: lightblue;
+    color: black;
+    border: 3px solid red;
+    border-radius: 0.5rem;
+    margin-inline-start: 3.5rem;
+    margin-block-end: 2rem;
+    cursor: pointer;
+}
+
+.ingreso-button {
+    inline-size: 6.5rem;
+    block-size: 2.5rem;
+    background-color: lightblue;
+    color: black;
+    border: 3px solid red;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-block-start: 2rem;
+}
+
+.presupuesto {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(105, 173, 105);
+}
+
+.presupuesto label {
+    font-size: 1.25rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+}
+
+.budget {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: green;
+    background: white;
+    border: 1px solid red;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    inline-size: 8rem;
+    text-align: center;
+}
+
+.ingreso-input {
+    inline-size: 5rem;
+    block-size: 2rem;
+    background: rgb(125, 121, 121);
+    color: white;
+    border: 3px solid red;
+    border-radius: 0.5rem;
+    margin-block-start: 1rem;
+}
+
+.resultado {
+    background: rgb(194, 99, 99);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-.motivation {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1.3rem;
+@media (max-width: 410px) {
+    .container {
+        flex-direction: column;
+        gap: 1rem;
+        inline-size: 410px;
+        block-size: 1fr;
+    }
+    .gasto {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .input2 {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .inputcito {
+        margin-inline-start: 0;
+    }
+    .monto-input {
+        margin-inline-start: 0;
+    }
+    .boton {
+        margin-inline-start: 0;
+    }
 }
